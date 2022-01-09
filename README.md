@@ -13,6 +13,7 @@ You can set a lot of things like:
 
 
 ## Others
-If he use an elevator, that will take a half of the time to arrive and transport the player (others players too, if SCP 503 called)
-If he use a RADIO, the drain of the battery will be divided by 2
-If he fall, the damage he should take will be divided by 3
+- If he use an elevator, that will take a half of the time to arrive and transport the player (others players too, if SCP 503 called)
+- If he use a RADIO, the drain of the battery will be divided by 2
+- If he fall, the damage he should take will be divided by 3
+- If he get shot, the damage he should be will be divided by 2
