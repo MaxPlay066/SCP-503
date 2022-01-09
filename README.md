@@ -17,3 +17,7 @@ You can set a lot of things like:
 - If he use a RADIO, the drain of the battery will be divided by 2
 - If he fall, the damage he should take will be divided by 3
 - If he get shot, the damage he should be will be divided by 2
+
+
+## Commands and Permissions
+- spawn503 = SCP503.spawn503
