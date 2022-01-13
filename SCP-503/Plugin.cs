@@ -17,7 +17,7 @@ namespace SCP_503
         public override string Author { get; } = "MaxPlay066";
         public override string Name { get; } = "SCP503";
         public override string Prefix { get; } = "SCP503";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 0, 1);
         public override Version RequiredExiledVersion { get; } = new Version(4, 0, 0);
         public Handlers Handlers { get; private set; }
         public override void OnEnabled()

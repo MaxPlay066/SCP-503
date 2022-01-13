@@ -75,7 +75,8 @@ namespace SCP_503
             if(ev.Player == SCP503)
             {
                 ev.Lift.movingSpeed /= 2;
-            } else
+            }
+            else
             {
                 ev.Lift.movingSpeed = 5;
             }
@@ -134,6 +135,7 @@ namespace SCP_503
             SCPSet = true;
             var cfg = Plugin.Singleton.Config;
             player.Role = cfg.ScpRole;
+            player.MaxHealth = cfg.ScpHealth;
             player.Health = cfg.ScpHealth;
             player.ReferenceHub.nicknameSync.ShownPlayerInfo &= ~PlayerInfoArea.Role;
             player.CustomInfo = "<color=red>SCP-503</color>";
@@ -146,8 +148,6 @@ namespace SCP_503
             player.ReferenceHub.nicknameSync.ShownPlayerInfo |= PlayerInfoArea.Role;
             SCPSet = false;
             SCP503 = null;
-
-
         }
 
         
