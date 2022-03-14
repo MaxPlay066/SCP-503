@@ -30,32 +30,40 @@ namespace SCP_503
         public void OnHurting(HurtingEventArgs ev)
         {
             var cfg = Plugin.Singleton.Config;
-            if(ev.Target == SCP503)
+            if (ev.Target == SCP503)
             {
                 switch (ev.Handler.Type)
                 {
-                    case DamageType.Tesla: ev.Amount = cfg.TeslaDamage;
+                    case DamageType.Tesla:
+                        ev.Amount = cfg.TeslaDamage;
                         break;
-                    case DamageType.Scp173: ev.Amount = cfg.Scp173Damage;
+                    case DamageType.Scp173:
+                        ev.Amount = cfg.Scp173Damage;
                         break;
-                    case DamageType.Scp096: ev.Amount = cfg.Scp096Damage;
+                    case DamageType.Scp096:
+                        ev.Amount = cfg.Scp096Damage;
                         break;
-                    case DamageType.Scp049: ev.Amount = cfg.Scp049Damage;
+                    case DamageType.Scp049:
+                        ev.Amount = cfg.Scp049Damage;
                         break;
-                    case DamageType.Scp106: ev.Amount = cfg.Scp106Damage;
+                    case DamageType.Scp106:
+                        ev.Amount = cfg.Scp106Damage;
                         break;
-                    case DamageType.Scp939: ev.Amount = cfg.Scp939Damage;
+                    case DamageType.Scp939:
+                        ev.Amount = cfg.Scp939Damage;
                         break;
-                    case DamageType.Firearm: ev.Amount /= 2;
+                    case DamageType.Firearm:
+                        ev.Amount /= 2;
                         break;
-                    case DamageType.Falldown: ev.Amount /= 3;
+                    case DamageType.Falldown:
+                        ev.Amount /= 3;
                         break;
                 }
             }
 
-            if(ev.Attacker == SCP503)
+            if (ev.Attacker == SCP503)
             {
-               if(ev.Handler.Type == DamageType.Firearm)
+                if (ev.Handler.Type == DamageType.Firearm)
                 {
                     ev.Amount *= 2;
                 }
@@ -64,7 +72,7 @@ namespace SCP_503
 
         public void FailingEscapePocketDimension(FailingEscapePocketDimensionEventArgs ev)
         {
-            if(ev.Player == SCP503)
+            if (ev.Player == SCP503)
             {
                 ev.IsAllowed = false;
                 Timing.CallDelayed(0.15f, () => ev.Player.Position = Map.Rooms.First(room => room.Type == RoomType.Hcz106).Position + new Vector3(0, 2.5F, 0));
@@ -72,7 +80,7 @@ namespace SCP_503
         }
         public void InteractingElevator(InteractingElevatorEventArgs ev)
         {
-            if(ev.Player == SCP503)
+            if (ev.Player == SCP503)
             {
                 ev.Lift.movingSpeed /= 2;
             }
@@ -81,7 +89,7 @@ namespace SCP_503
                 ev.Lift.movingSpeed = 5;
             }
         }
-        
+
 
         public IEnumerator<float> Choose503()
         {
@@ -101,7 +109,7 @@ namespace SCP_503
 
         public void OnChangingRole(ChangingRoleEventArgs ev)
         {
-            if(ev.Player == SCP503)
+            if (ev.Player == SCP503)
             {
                 UnSpawn503(SCP503);
             }
@@ -118,7 +126,7 @@ namespace SCP_503
         public void Handcuffing(HandcuffingEventArgs ev)
         {
             var cfg = Plugin.Singleton.Config;
-            if(ev.Target == SCP503)
+            if (ev.Target == SCP503)
             {
                 int rrange = UnityEngine.Random.Range(1, 101);
                 if (rrange <= cfg.FailHandcuffPercentuage)
@@ -130,7 +138,7 @@ namespace SCP_503
         }
 
         public static void Spawn503(Player player)
-        { 
+        {
             SCP503 = player;
             SCPSet = true;
             var cfg = Plugin.Singleton.Config;
@@ -140,7 +148,7 @@ namespace SCP_503
             player.ReferenceHub.nicknameSync.ShownPlayerInfo &= ~PlayerInfoArea.Role;
             player.CustomInfo = "<color=red>SCP-503</color>";
             Timing.CallDelayed(0.15f, () => player.Position = Map.Rooms.First(room => room.Type == RoomType.LczGlassBox).Position + new Vector3(0, 2.5f, 0));
-        } 
+        }
 
         public static void UnSpawn503(Player player)
         {
@@ -150,6 +158,6 @@ namespace SCP_503
             SCP503 = null;
         }
 
-        
+
     }
 }
