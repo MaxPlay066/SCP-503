@@ -75,18 +75,18 @@ namespace SCP_503
             if (ev.Player == SCP503)
             {
                 ev.IsAllowed = false;
-                Timing.CallDelayed(0.15f, () => ev.Player.Position = Map.Rooms.First(room => room.Type == RoomType.Hcz106).Position + new Vector3(0, 2.5F, 0));
+                Timing.CallDelayed(0.15f, () => ev.Player.Position = Room.Get(RoomType.Hcz106).Position + new Vector3(0, 2.5f, 0));
             }
         }
         public void InteractingElevator(InteractingElevatorEventArgs ev)
         {
             if (ev.Player == SCP503)
             {
-                ev.Lift.movingSpeed /= 2;
+                ev.Lift.MovingSpeed /= 2;
             }
             else
             {
-                ev.Lift.movingSpeed = 5;
+                ev.Lift.MovingSpeed = 5;
             }
         }
 
@@ -142,12 +142,12 @@ namespace SCP_503
             SCP503 = player;
             SCPSet = true;
             var cfg = Plugin.Singleton.Config;
-            player.Role = cfg.ScpRole;
+            player.SetRole(cfg.ScpRole);
             player.MaxHealth = cfg.ScpHealth;
             player.Health = cfg.ScpHealth;
             player.ReferenceHub.nicknameSync.ShownPlayerInfo &= ~PlayerInfoArea.Role;
             player.CustomInfo = "<color=red>SCP-503</color>";
-            Timing.CallDelayed(0.15f, () => player.Position = Map.Rooms.First(room => room.Type == RoomType.LczGlassBox).Position + new Vector3(0, 2.5f, 0));
+            Timing.CallDelayed(0.15f, () => player.Position = Room.Get(RoomType.LczGlassBox).Position + new Vector3(0, 2.5f, 0));
         }
 
         public static void UnSpawn503(Player player)
